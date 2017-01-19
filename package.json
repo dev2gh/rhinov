@@ -3,17 +3,22 @@
   "version": "0.0.1",
   "description": "Rhinov frontend test",
   "keywords": [
-      "test",
-      "rhinov",
-      "javascript",
-      "angular"
+    "test",
+    "rhinov",
+    "javascript",
+    "angular",
+    "bootstrap"
   ],
-  "repository": "https://github.com/dev2gh/rhinov.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev2gh/rhinov.git"
+  },
   "homepage": "https://dev2gh.github.io/rhinov/",
   "author": "Hernandez Georges",
   "dependencies": {
-      "angular": "~1.5.0",
-      "angular-loading-bar": "~0.8.0"
+    "angular": "~1.5.0",
+    "angular-ui-router": "^0.3.2",
+    "bootstrap-sass": "~3.3.7"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
@@ -25,8 +30,11 @@
     "gulp-sass": "^2.0.0",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.1.0",
-    "gulp-uglifycss": "^1.0.4",
-    "gulp-gh-pages": "^0.5.4",
+    "gulp-clean-css": "^2.3.2",
     "del": "^2.2.2"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/dev2gh/rhinov/issues"
+  },
+  "main": "index.html"
 }
