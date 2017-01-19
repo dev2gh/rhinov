@@ -5,7 +5,8 @@ var styleDest     = './src/css';
 /* js paths  */
 var vendorJsSRC = [
     './node_modules/angular/angular.min.js',
-    './node_modules/angular-ui-router/release/angular-ui-router.min.js'
+    './node_modules/angular-ui-router/release/angular-ui-router.min.js',
+    './bower_components/ng-img-crop/compile/minified/ng-img-crop.js'
 ];
 var vendorJsFile = 'vendors';
 var customJsSRC = './build/js/*.js';
@@ -62,6 +63,10 @@ gulp.task('custom-styles', function () {
         'last 2 versions',
         '> 5%'
     ))
+    .pipe( gulp.dest( styleDest ) )
+    .pipe( rename({
+        suffix: ".min"
+    }))
     .pipe( gulp.dest( styleDest ) )
     .pipe( livereload() );
 });

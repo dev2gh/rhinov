@@ -1,11 +1,21 @@
 <div class="uploader uploader--{{current.title}}">
-    <output id="uploader__output--{{current.title}}" class="uploader__output"></output>
+    <output id="uploader__output--personnelles" class="uploader__output" ng-if="current.title=='personnelles'">
+        <img ng-src="{{croppedAvatar}}" />
+    </output>
+    <output id="uploader__output--agence" class="uploader__output" ng-if="current.title=='agence'">
+        <img ng-src="{{croppedLogo}}" />
+    </output>
 
     <div class="uploader-fields  uploader-fields--{{current.title}}">
+
         <span class="uploader-fields__label">{{current.uploader_label}}</span>
         <label class="uploader-fields__label--input-wrapper">
-            {{current.uploader_button_text}} <input type="file" id="uploader-fields__input--{{current.title}}" class="uploader-fields__input" />
+            {{current.uploader_button_text}} <input type="file" id="uploader-fields__input--{{current.title}}" class="uploader-fields__input" image-crop />
         </label>
         <span class="uploader-fields__caption">{{current.uploader_caption}}</span>
     </div>
+</div>
+
+<div class="cropArea">
+    <img-crop image="myImage" result-image="{true:'croppedAvatar', false:'croppedLogo'}[current.title=='personnelles']" area-type="circle" result-image-size="130" ></img-crop>
 </div>

@@ -9,7 +9,7 @@
     //        Angular.js        Application Name
     //          |                 |               Dependencies
     //          |                 |                   |
-    var app = angular.module( 'userProfile', ['ui.router']);
+    var app = angular.module( 'userProfile', ['ui.router', 'ngImgCrop']);
 
     app.config( [ '$stateProvider', '$urlRouterProvider', '$locationProvider' , function( $stateProvider, $urlRouterProvider, $locationProvider ) {
 

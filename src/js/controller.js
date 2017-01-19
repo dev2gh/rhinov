@@ -10,6 +10,13 @@
 
     app.controller( 'userProfileCtrl', function( $scope, $state ) {
 
+        // image cropper
+        $scope.imageAvatar = '';
+        $scope.imageLogo = '';
+        $scope.croppedAvatar = '';
+        $scope.croppedLogo = '';
+
+        // tabs state manager
         $scope.tabs = [
             {
                 title: 'personnelles',
@@ -26,11 +33,23 @@
             }
         ];
 
-        $scope.$on("$stateChangeSuccess", function(){
+        $scope.$on( '$stateChangeSuccess', function(){
             $scope.tabs.forEach( function( item ){
                 item.active = $state.includes( item.title );
+                if ( true === item.active ) {
+                    $scope.current = item;
+                }
+                if ( true === item.active && 'personnelles' === item.title ) {
+                    $scope.cropped = 'croppedAvatar';
+                }
+                if ( true === item.active && 'agence' === item.title ){
+                    $scope.cropped = 'croppedLogo';
+                }
             });
         });
+
+        // $scope.myCroppedImagePersonnelles = '';
+        // $scope.myCroppedImageAgence = '';
 
     });
 })();
