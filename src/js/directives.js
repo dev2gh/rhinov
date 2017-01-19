@@ -11,7 +11,7 @@
     app.directive('imageManager', function () {
         return {
             restrict: 'E',
-            templateUrl: '../../templates/image-manager.html',
+            templateUrl: 'templates/image-manager.html',
             link: function(scope, element, attrs) {
                 var t = scope.$parent.tabs,
                     i = t.length;
