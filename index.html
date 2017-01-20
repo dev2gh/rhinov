@@ -12,23 +12,11 @@
 
     <body data-ng-app="userProfile">
 
-        <nav class="navbar-fixed-top header">
-            <div class="col-lg-12 col-xs-12 col-md-12">
-                <a class="navbar-brand header__link" href="#/personnelles">Rhinov</a>
-                <h3 class="header__title">Rhino U.</h3>
-                <h4 class="header__subtitle">Mes informations</h4>
-            </div>
-        </nav>
+        <head-nav></head-nav>
 
         <div class="container-fluid tabset--container" data-ng-controller="userProfileCtrl as user">
 
-            <div class="" style="z-index: 10;">
-                <tabset class="tabset tabset--fixed-top">
-                    <tab class="tabset__tab tabset__tab--{{item.title}}" data-ng-class="{true:'active', false:''}[item.active]" ng-repeat="item in tabs" heading="{{item.title}}" active="item.active" ui-sref="{{item.title}}">
-                        {{item.title}}
-                    </tab>
-                </tabset>
-            </div>
+            <page-tabset></page-tabset>
 
             <div class="message message--validated container" ng-show="formerror||formvalid">
                 <div ng-class="{true:'text--valid', false:'text--error'}[validated]">{{message}}</div>
