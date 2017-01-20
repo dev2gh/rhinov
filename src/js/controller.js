@@ -52,8 +52,6 @@
         // form submission handler
         $scope.submit = function(form) {
 
-            console.log(form);
-
             $scope.message = '';
             $scope.formerror = '';
             $scope.formvalid = '';

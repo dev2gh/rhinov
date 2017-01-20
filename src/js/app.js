@@ -16,15 +16,15 @@
         // set possible states to navigate into
         $stateProvider.state( 'personnelles', {
             url: '/personnelles',
-            templateUrl: 'templates/user-infos.html'
+            templateUrl: 'templates/infos-form.html'
         })
         .state( 'facturation', {
             url: '/facturation',
-            templateUrl: 'templates/user-billing.html'
+            templateUrl: 'templates/billing-form.html'
         })
         .state('agence', {
             url: '/agence',
-            templateUrl: 'templates/user-agency.html'
+            templateUrl: 'templates/agency-form.html'
         });
 
         // set the default activated tab with the first state
