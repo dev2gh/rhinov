@@ -19,7 +19,7 @@ Angular-ui-router (v0.3.2), et Bootstrap-sass (v3.3.7)
 
 ## Ameliorations possibles
 * les selects n'ont pas encore été stylisés (donc ils sont nativement un peu moches)
-* les formulaires sont testées toutes à chaque fois alors qu'on ne submitte que le formulaire de l'onglet actuel
+* les formulaires sont testées toutes à chaque fois alors qu'on ne submitte que le formulaire de l'onglet actuel (erreur repertoriée dans les issues de Angular et en recherche de solution correcte pour ma part sans en arriver à mettre un controller unique pour chaque formulaire)
 * je ne sais absolument pas comment le test s'affiche sur un mac car je n'en ai pas sous la main
 
 
