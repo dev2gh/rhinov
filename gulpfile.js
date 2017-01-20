@@ -1,5 +1,6 @@
 /* styles paths */
 var customScssSRC = './build/scss/**/*.scss';
+var vendorCss = './bower_components/ng-img-crop/compile/minified/ng-img-crop.css';
 var styleDest     = './src/css';
 
 /* js paths  */
@@ -9,6 +10,7 @@ var vendorJsSRC = [
     './bower_components/ng-img-crop/compile/minified/ng-img-crop.js'
 ];
 var vendorJsFile = 'vendors';
+var vendorCssFile = 'vendors';
 var customJsSRC = './build/js/*.js';
 var jsDest       = './src/js/';
 
@@ -65,6 +67,22 @@ gulp.task('custom-styles', function () {
     ))
     .pipe( gulp.dest( styleDest ) )
     .pipe( rename({
+        suffix: ".min"
+    }))
+    .pipe( gulp.dest( styleDest ) )
+    .pipe( livereload() );
+});
+
+
+/**
+* Task: vendor styles
+*/
+gulp.task('vendor-styles', function () {
+    gulp.src( vendorCss )
+    // .pipe( concat( vendorCssFile + '.css' ) )
+    .pipe( gulp.dest( styleDest ) )
+    .pipe( rename({
+        basename: vendorCssFile,
         suffix: ".min"
     }))
     .pipe( gulp.dest( styleDest ) )
@@ -131,4 +149,4 @@ gulp.task( 'watch', function() {
 * Default Tasks.
 * Register all tasks and load all
 */
-gulp.task( 'default', [ 'clean', 'custom-styles', 'custom-scripts', 'vendor-scripts', 'watch' ]);
+gulp.task( 'default', [ 'clean', 'custom-styles', 'vendor-styles', 'custom-scripts', 'vendor-scripts', 'watch' ]);

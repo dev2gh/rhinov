@@ -1,4 +1,4 @@
-<form class="form form--wrapper form--personnelles" name="userInfos" novalidate role="form">
+<form class="form form--wrapper form--personnelles" name="userForm" novalidate role="form">
 
     <div class="uploader uploader--personnelles">
         <output id="uploader__output--personnelles" class="uploader__output">
@@ -18,60 +18,64 @@
         <img-crop image="imageAvatar" result-image="croppedAvatar" area-type="circle" result-image-size="130" ></img-crop>
     </div>
 
-    <div class="form-group form-group--civilite col-xs-12 col-sm-3 col-md-3 col-lg-3 no-pad-left">
+
+    <div class="form-group form-group--civilite">
         <label for="civilite">Civilité *</label>
-        <select name="civilite" class="form-control civilite__select" id="civilite" required>
+        <span class="label label-danger" id="civilite-error" data-ng-show="submitted && userForm.civilite.$error.required">Obligatoire</span>
+        <select name="civilite" class="form-control civilite__select" id="civilite" data-ng-model="civilite" required>
             <option value="m">M</option>
             <option value="mme">Mme</option>
         </select>
     </div>
 
-    <div class="form-group form-group--prenom col-xs-12 col-sm-9 col-md-9 col-lg-9 no-pad-right">
+    <div class="form-group form-group--prenom">
         <label for="prenom">Prénom *</label>
-        <span class="label label-danger" data-ng-show="submitted && userInfos.prenom.$error.required">Obligatoire</span>
+        <span class="label label-danger" data-ng-show="submitted && userForm.prenom.$error.required">Obligatoire</span>
         <input class="form-control prenom__input" type="text" id="prenom" name="prenom" data-ng-model="prenom"  required />
     </div>
 
     <div class="form-group form-group--nom">
         <label for="nom">Nom *</label>
-        <span class="label label-danger" data-ng-show="submitted && userInfos.nom.$error.required">Obligatoire</span>
+        <span class="label label-danger" data-ng-show="submitted && userForm.nom.$error.required">Obligatoire</span>
         <input class="form-control nom__input" type="text" id="nom" name="nom" data-ng-model="nom" required />
     </div>
 
     <div class="form-group form-group--telephone">
         <label for="telephone">Telephone *</label>
-        <span class="label label-danger" data-ng-show="submitted && userInfos.telephone.$error.required">Obligatoire</span>
-        <input class="form-control telephone__input" type="tel" id="telephone" name="telephone" data-ng-model="telephone" pattern='^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$' placeholder="+33 0" required />
+        <span class="label label-danger" data-ng-show="submitted && userForm.telephone.$error.required">Obligatoire</span>
+        <span class="label label-danger" data-ng-show="submitted && userForm.telephone.$error.pattern">Numéro Invalide</span>
+        <input class="form-control telephone__input" type="tel" id="telephone" name="telephone" data-ng-model="telephone" data-ng-pattern='/^(\+\d{1,3}[- ]?)?\d{10,}$/' placeholder="+33 0" required />
     </div>
 
     <div class="form-group form-group--email">
         <label for="email">Email *</label>
-        <span class="label label-danger" data-ng-show="submitted && userInfos.email.$error.required">Obligatoire</span>
-        <span class="label label-danger" data-ng-show="submitted && userInfos.$error.email">Email invalide</span>
-        <input class="form-control email__input" type="email" id="email" name="email" data-ng-model="email" placeholder="rhino@email.com" required />
+        <span class="label label-danger" data-ng-show="submitted && userForm.email.$error.required">Obligatoire</span>
+        <span class="label label-danger" data-ng-show="submitted && userForm.$error.email">Email invalide</span>
+        <input class="form-control email__input" type="email" id="email" name="email" data-ng-model="email" placeholder="rhino@email.com" value="rhino@email.com" disabled />
     </div>
 
-    <div class="form-group form-group--pass-old">
-        <label for="password--old">Ancien mot de passe *</label>
-        <span class="label label-danger" data-ng-show="submitted && userInfos.password--old.$error.required">Obligatoire</span>
-        <span class="label label-danger" data-ng-show="submitted && userInfos.$error.password--old">Mot de passe invalide</span>
-        <input class="form-control password__input--old" type="password"  name="password--old" id="password--old">
+    <div class="form-group form-group--passOld">
+        <label for="passwordOld">Ancien mot de passe *</label>
+        <span class="label label-danger" data-ng-show="submitted && userForm.passwordOld.$error.required">Obligatoire</span>
+        <span class="label label-danger" data-ng-show="submitted && userForm.$error.passwordOld">Mot de passe invalide</span>
+        <input class="form-control password__input--old" type="password"  name="passwordOld" id="passwordOld" data-ng-model="passwordOld" required />
     </div>
 
-    <div class="form-group form-group--pass-new">
-        <label for="password--new">Nouveau mot de passe *</label>
-        <span class="label label-danger" data-ng-show="submitted && userInfos.password--new.$error.required">Obligatoire</span>
-        <span class="label label-danger" data-ng-show="submitted && userInfos.$error.password--new">Mot de passe invalide</span>
-        <input class="form-control password__input--new" type="password"  name="password--new" id="password--new">
+    <div class="form-group form-group--passwordNew">
+        <label for="passwordNew">Nouveau mot de passe *</label>
+        <span class="label label-danger" data-ng-show="submitted && userForm.passwordNew.$error.required">Obligatoire</span>
+        <input class="form-control password__input--new" type="password"  name="passwordNew" id="passwordNew" data-ng-model="passwordNew" required />
     </div>
 
-    <div class="form-group form-group--pass-conf">
-        <label for="password--conf">Confirmation du mot de passe *</label>
-        <span class="label label-danger" data-ng-show="submitted && userInfos.password--conf.$error.required">Obligatoire</span>
-        <span class="label label-danger" data-ng-show="submitted && userInfos.$error.password--conf">Doit être identique au champ précédent</span>
-        <input class="form-control password__input--conf" type="password"  name="password--conf" id="password--conf">
+    <div class="form-group form-group--passwordConf">
+        <label for="passwordConf">Confirmation du mot de passe *</label>
+        <span class="label label-danger" data-ng-show="submitted && userForm.passwordConf.$error.required">Obligatoire</span>
+        <span class="label label-danger" data-ng-show="submitted && userForm.passwordConf.$error.passwordVerify">Doit être identique au champ précédent</span>
+        <input class="form-control password__input--conf" type="password"  name="passwordConf" id="passwordConf" data-ng-model="passwordConf" data-password-verify="passwordNew" required />
     </div>
 
-    <button data-ng-click="submit(userInfos)" class="validation__button validation__button--userInfos">Mettre à jour</button>
+    <div class="form-group form-group--validation">
+        <button data-ng-click="submit(userForm)" class="validation__button validation__button--userForm">Mettre à jour</button>
+    </div>
 
 </form>
