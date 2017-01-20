@@ -1,7 +1,7 @@
 # rhinov
 frontend test
 
-## technos
+## Technos
 Pour la gestion des sources, Gulp avec comme dependances :
 * pour le développement Angular (v1.5.0),
 Angular-ui-router (v0.3.2), et Bootstrap-sass (v3.3.7)
