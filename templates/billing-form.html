@@ -1,296 +1,787 @@
-<form class="form form--wrapper form--facturation" name="billingForm" novalidate role="form">
+<div ng-controller="billingCtrl as billing">
+    <form class="form form--wrapper form--facturation" name="billingForm" novalidate role="form">
 
-    <div class="form-group form-group--billing-name">
-        <label for="billing">Raison sociale *</label>
-        <span class="label label-danger" data-ng-show="submitted && billingForm.billing.$error.required">Obligatoire</span>
-        <input class="form-control billing__input" type="text" id="billing" name="billing" data-ng-model="billing" required placeholder="Rhino Entreprise" />
-    </div>
+        <div class="form-group form-group--billing-name">
+            <label for="billingName">Raison sociale *</label>
+            <span class="label label-danger" data-ng-show="submitted && billingForm.billingName.$error.required">Obligatoire</span>
+            <input class="form-control billing__input" type="text" id="billingName" name="billingName" data-ng-model="billingName" required placeholder="Rhino Entreprise" />
+        </div>
 
-    <div class="form-group form-group--billing_telephone">
-        <label for="billing_telephone">Telephone *</label>
-        <span class="label label-danger" data-ng-show="submitted && billingForm.billing_telephone.$error.required">Obligatoire</span>
-        <span class="label label-danger" data-ng-show="submitted && billingForm.billing_telephone.$error.pattern">Numéro Invalide</span>
-        <input class="form-control telephone__input" type="tel" id="billing_telephone" name="billing_telephone" data-ng-model="billing_telephone" data-ng-pattern='/^(\+\d{1,3}[- ]?)?\d{10,}$/' placeholder="+33 0" required data-ng-model="billing_telephone" />
-    </div>
+        <div class="form-group form-group--billing_telephone">
+            <label for="billing_telephone">Telephone *</label>
+            <span class="label label-danger" data-ng-show="submitted && billingForm.billing_telephone.$error.required">Obligatoire</span>
+            <span class="label label-danger" data-ng-show="submitted && billingForm.billing_telephone.$error.pattern">Numéro Invalide</span>
+            <input class="form-control telephone__input" type="tel" id="billing_telephone" name="billing_telephone" data-ng-model="billing_telephone" data-ng-pattern='/^(\+\d{1,3}[- ]?)?\d{10,}$/' placeholder="+33 0" required data-ng-model="billing_telephone" />
+        </div>
 
-    <div class="form-group form-group--billing_address">
-        <label for="billing_address">Adresse *</label>
-        <span class="label label-danger" data-ng-show="submitted && billingForm.billing_address.$error.required">Obligatoire</span>
-        <input class="form-control billing_address__input" type="email" id="billing_address" name="billing_address" data-ng-model="billing_address" placeholder="8 Av. de la Girafe" required />
-    </div>
+        <div class="form-group form-group--billing_address">
+            <label for="billing_address">Adresse *</label>
+            <span class="label label-danger" data-ng-show="submitted && billingForm.billing_address.$error.required">Obligatoire</span>
+            <input class="form-control billing_address__input" type="email" id="billing_address" name="billing_address" data-ng-model="billing_address" placeholder="8 Av. de la Girafe" required />
+        </div>
 
-    <div class="form-group form-group--billing_postal">
-        <label for="billing_postal">Code postal *</label>
-        <span class="label label-danger" data-ng-show="submitted && billingForm.billing_postal.$error.required">Obligatoire</span>
-        <input class="form-control billing_postal__input" type="text" id="billing_postal" name="billing_postal" data-ng-model="billing_postal"  placeholder="00 128" required />
-    </div>
+        <div class="form-group form-group--billing_postal">
+            <label for="billing_postal">Code postal *</label>
+            <span class="label label-danger" data-ng-show="submitted && billingForm.billing_postal.$error.required">Obligatoire</span>
+            <input class="form-control billing_postal__input" type="text" id="billing_postal" name="billing_postal" data-ng-model="billing_postal"  placeholder="00 128" required />
+        </div>
 
-    <div class="form-group form-group--billing_city">
-        <label for="billing_city">Ville *</label>
-        <span class="label label-danger" data-ng-show="submitted && billingForm.billing_city.$error.required">Obligatoire</span>
-        <input class="form-control billing_city__input" type="text" id="billing_city" name="billing_city" data-ng-model="billing_city" placeholder="Jungle City" required />
-    </div>
+        <div class="form-group form-group--billing_city">
+            <label for="billing_city">Ville *</label>
+            <span class="label label-danger" data-ng-show="submitted && billingForm.billing_city.$error.required">Obligatoire</span>
+            <input class="form-control billing_city__input" type="text" id="billing_city" name="billing_city" data-ng-model="billing_city" placeholder="Jungle City" required />
+        </div>
 
-    <div class="form-group form-group--country">
-        <!--  ISO-3166-1: Alpha-2 Codes -->
-        <label for="country">Pays *</label>
-        <span class="label label-danger" data-ng-show="submitted && billingForm.country.$error.required">Obligatoire</span>
-        <select name="country" class="form-control country__select" data-ng-model="country" required>
-            <option value="AF">AFGHANISTAN</option>
-            <option value="ZA">AFRIQUE DU SUD</option>
-            <option value="AX">ÅLAND, ÎLES</option>
-            <option value="AL">ALBANIE</option>
-            <option value="DZ">ALGÉRIE</option>
-            <option value="DE">ALLEMAGNE</option>
-            <option value="AD">ANDORRE</option>
-            <option value="AO">ANGOLA</option>
-            <option value="AI">ANGUILLA</option>
-            <option value="AQ">ANTARCTIQUE</option>
-            <option value="AG">ANTIGUA-ET-BARBUDA</option>
-            <option value="AN">ANTILLES NÉERLANDAISES</option>
-            <option value="SA">ARABIE SAOUDITE</option>
-            <option value="AR">ARGENTINE</option>
-            <option value="AM">ARMÉNIE</option>
-            <option value="AW">ARUBA</option>
-            <option value="AU">AUSTRALIE</option>
-            <option value="AT">AUTRICHE</option>
-            <option value="AZ">AZERBAÏDJAN</option>
-            <option value="BS">BAHAMAS</option>
-            <option value="BH">BAHREÏN</option>
-            <option value="BD">BANGLADESH</option>
-            <option value="BB">BARBADE</option>
-            <option value="BY">BÉLARUS</option>
-            <option value="BE">BELGIQUE</option>
-            <option value="BZ">BELIZE</option>
-            <option value="BJ">BÉNIN</option>
-            <option value="BM">BERMUDES</option>
-            <option value="BT">BHOUTAN</option>
-            <option value="BO">BOLIVIE</option>
-            <option value="BA">BOSNIE-HERZÉGOVINE</option>
-            <option value="BW">BOTSWANA</option>
-            <option value="BV">BOUVET, ÎLE</option>
-            <option value="BR">BRÉSIL</option>
-            <option value="BN">BRUNÉI DARUSSALAM</option>
-            <option value="BG">BULGARIE</option>
-            <option value="BF">BURKINA FASO</option>
-            <option value="BI">BURUNDI</option>
-            <option value="KY">CAÏMANES, ÎLES</option>
-            <option value="KH">CAMBODGE</option>
-            <option value="CM">CAMEROUN</option>
-            <option value="CA">CANADA</option>
-            <option value="CV">CAP-VERT</option>
-            <option value="CF">CENTRAFRICAINE, RÉPUBLIQUE</option>
-            <option value="CL">CHILI</option>
-            <option value="CN">CHINE</option>
-            <option value="CX">CHRISTMAS, ÎLE</option>
-            <option value="CY">CHYPRE</option>
-            <option value="CC">COCOS (KEELING), ÎLES</option>
-            <option value="CO">COLOMBIE</option>
-            <option value="KM">COMORES</option>
-            <option value="CG">CONGO</option>
-            <option value="CD">CONGO, LA RÉPUBLIQUE DÉMOCRATIQUE DU</option>
-            <option value="CK">COOK, ÎLES</option>
-            <option value="KR">CORÉE, RÉPUBLIQUE DE</option>
-            <option value="KP">CORÉE, RÉPUBLIQUE POPULAIRE DÉMOCRATIQUE DE</option>
-            <option value="CR">COSTA RICA</option>
-            <option value="CI">CÔTE D'IVOIRE</option>
-            <option value="HR">CROATIE</option>
-            <option value="CU">CUBA</option>
-            <option value="DK">DANEMARK</option>
-            <option value="DJ">DJIBOUTI</option>
-            <option value="DO">DOMINICAINE, RÉPUBLIQUE</option>
-            <option value="DM">DOMINIQUE</option>
-            <option value="EG">ÉGYPTE</option>
-            <option value="SV">EL SALVADOR</option>
-            <option value="AE">ÉMIRATS ARABES UNIS</option>
-            <option value="EC">ÉQUATEUR</option>
-            <option value="ER">ÉRYTHRÉE</option>
-            <option value="ES">ESPAGNE</option>
-            <option value="EE">ESTONIE</option>
-            <option value="US">ÉTATS-UNIS</option>
-            <option value="ET">ÉTHIOPIE</option>
-            <option value="FK">FALKLAND, ÎLES (MALVINAS)</option>
-            <option value="FO">FÉROÉ, ÎLES</option>
-            <option value="FJ">FIDJI</option>
-            <option value="FI">FINLANDE</option>
-            <option value="FR">FRANCE</option>
-            <option value="GA">GABON</option>
-            <option value="GM">GAMBIE</option>
-            <option value="GE">GÉORGIE</option>
-            <option value="GS">GÉORGIE DU SUD ET LES ÎLES SANDWICH DU SUD</option>
-            <option value="GH">GHANA</option>
-            <option value="GI">GIBRALTAR</option>
-            <option value="GR">GRÈCE</option>
-            <option value="GD">GRENADE</option>
-            <option value="GL">GROENLAND</option>
-            <option value="GP">GUADELOUPE</option>
-            <option value="GU">GUAM</option>
-            <option value="GT">GUATEMALA</option>
-            <option value="GG">GUERNESEY</option>
-            <option value="GN">GUINÉE</option>
-            <option value="GW">GUINÉE-BISSAU</option>
-            <option value="GQ">GUINÉE ÉQUATORIALE</option>
-            <option value="GY">GUYANA</option>
-            <option value="GF">GUYANE FRANÇAISE</option>
-            <option value="HT">HAÏTI</option>
-            <option value="HM">HEARD, ÎLE ET MCDONALD, ÎLES</option>
-            <option value="HN">HONDURAS</option>
-            <option value="HK">HONG-KONG</option>
-            <option value="HU">HONGRIE</option>
-            <option value="IM">ÎLE DE MAN</option>
-            <option value="UM">ÎLES MINEURES ÉLOIGNÉES DES ÉTATS-UNIS</option>
-            <option value="VG">ÎLES VIERGES BRITANNIQUES</option>
-            <option value="VI">ÎLES VIERGES DES ÉTATS-UNIS</option>
-            <option value="IN">INDE</option>
-            <option value="ID">INDONÉSIE</option>
-            <option value="IR">IRAN, RÉPUBLIQUE ISLAMIQUE D'</option>
-            <option value="IQ">IRAQ</option>
-            <option value="IE">IRLANDE</option>
-            <option value="IS">ISLANDE</option>
-            <option value="IL">ISRAËL</option>
-            <option value="IT">ITALIE</option>
-            <option value="JM">JAMAÏQUE</option>
-            <option value="JP">JAPON</option>
-            <option value="JE">JERSEY</option>
-            <option value="JO">JORDANIE</option>
-            <option value="KZ">KAZAKHSTAN</option>
-            <option value="KE">KENYA</option>
-            <option value="KG">KIRGHIZISTAN</option>
-            <option value="KI">KIRIBATI</option>
-            <option value="KW">KOWEÏT</option>
-            <option value="LA">LAO, RÉPUBLIQUE DÉMOCRATIQUE POPULAIRE</option>
-            <option value="LS">LESOTHO</option>
-            <option value="LV">LETTONIE</option>
-            <option value="LB">LIBAN</option>
-            <option value="LR">LIBÉRIA</option>
-            <option value="LY">LIBYENNE, JAMAHIRIYA ARABE</option>
-            <option value="LI">LIECHTENSTEIN</option>
-            <option value="LT">LITUANIE</option>
-            <option value="LU">LUXEMBOURG</option>
-            <option value="MO">MACAO</option>
-            <option value="MK">MACÉDOINE, L'EX-RÉPUBLIQUE YOUGOSLAVE DE</option>
-            <option value="MG">MADAGASCAR</option>
-            <option value="MY">MALAISIE</option>
-            <option value="MW">MALAWI</option>
-            <option value="MV">MALDIVES</option>
-            <option value="ML">MALI</option>
-            <option value="MT">MALTE</option>
-            <option value="MP">MARIANNES DU NORD, ÎLES</option>
-            <option value="MA">MAROC</option>
-            <option value="MH">MARSHALL, ÎLES</option>
-            <option value="MQ">MARTINIQUE</option>
-            <option value="MU">MAURICE</option>
-            <option value="MR">MAURITANIE</option>
-            <option value="YT">MAYOTTE</option>
-            <option value="MX">MEXIQUE</option>
-            <option value="FM">MICRONÉSIE, ÉTATS FÉDÉRÉS DE</option>
-            <option value="MD">MOLDOVA, RÉPUBLIQUE DE</option>
-            <option value="MC">MONACO</option>
-            <option value="MN">MONGOLIE</option>
-            <option value="MS">MONTSERRAT</option>
-            <option value="MZ">MOZAMBIQUE</option>
-            <option value="MM">MYANMAR</option>
-            <option value="NA">NAMIBIE</option>
-            <option value="NR">NAURU</option>
-            <option value="NP">NÉPAL</option>
-            <option value="NI">NICARAGUA</option>
-            <option value="NE">NIGER</option>
-            <option value="NG">NIGÉRIA</option>
-            <option value="NU">NIUÉ</option>
-            <option value="NF">NORFOLK, ÎLE</option>
-            <option value="NO">NORVÈGE</option>
-            <option value="NC">NOUVELLE-CALÉDONIE</option>
-            <option value="NZ">NOUVELLE-ZÉLANDE</option>
-            <option value="IO">OCÉAN INDIEN, TERRITOIRE BRITANNIQUE DE L'</option>
-            <option value="OM">OMAN</option>
-            <option value="UG">OUGANDA</option>
-            <option value="UZ">OUZBÉKISTAN</option>
-            <option value="PK">PAKISTAN</option>
-            <option value="PW">PALAOS</option>
-            <option value="PS">PALESTINIEN OCCUPÉ, TERRITOIRE</option>
-            <option value="PA">PANAMA</option>
-            <option value="PG">PAPOUASIE-NOUVELLE-GUINÉE</option>
-            <option value="PY">PARAGUAY</option>
-            <option value="NL">PAYS-BAS</option>
-            <option value="PE">PÉROU</option>
-            <option value="PH">PHILIPPINES</option>
-            <option value="PN">PITCAIRN</option>
-            <option value="PL">POLOGNE</option>
-            <option value="PF">POLYNÉSIE FRANÇAISE</option>
-            <option value="PR">PORTO RICO</option>
-            <option value="PT">PORTUGAL</option>
-            <option value="QA">QATAR</option>
-            <option value="RE">RÉUNION</option>
-            <option value="RO">ROUMANIE</option>
-            <option value="GB">ROYAUME-UNI</option>
-            <option value="RU">RUSSIE, FÉDÉRATION DE</option>
-            <option value="RW">RWANDA</option>
-            <option value="EH">SAHARA OCCIDENTAL</option>
-            <option value="SH">SAINTE-HÉLÈNE</option>
-            <option value="LC">SAINTE-LUCIE</option>
-            <option value="KN">SAINT-KITTS-ET-NEVIS</option>
-            <option value="SM">SAINT-MARIN</option>
-            <option value="PM">SAINT-PIERRE-ET-MIQUELON</option>
-            <option value="VA">SAINT-SIÈGE (ÉTAT DE LA CITÉ DU VATICAN)</option>
-            <option value="VC">SAINT-VINCENT-ET-LES GRENADINES</option>
-            <option value="SB">SALOMON, ÎLES</option>
-            <option value="WS">SAMOA</option>
-            <option value="AS">SAMOA AMÉRICAINES</option>
-            <option value="ST">SAO TOMÉ-ET-PRINCIPE</option>
-            <option value="SN">SÉNÉGAL</option>
-            <option value="CS">SERBIE-ET-MONTÉNÉGRO</option>
-            <option value="SC">SEYCHELLES</option>
-            <option value="SL">SIERRA LEONE</option>
-            <option value="SG">SINGAPOUR</option>
-            <option value="SK">SLOVAQUIE</option>
-            <option value="SI">SLOVÉNIE</option>
-            <option value="SO">SOMALIE</option>
-            <option value="SD">SOUDAN</option>
-            <option value="LK">SRI LANKA</option>
-            <option value="SE">SUÈDE</option>
-            <option value="CH">SUISSE</option>
-            <option value="SR">SURINAME</option>
-            <option value="SJ">SVALBARD ET ÎLE JAN MAYEN</option>
-            <option value="SZ">SWAZILAND</option>
-            <option value="SY">SYRIENNE, RÉPUBLIQUE ARABE</option>
-            <option value="TJ">TADJIKISTAN</option>
-            <option value="TW">TAÏWAN, PROVINCE DE CHINE</option>
-            <option value="TZ">TANZANIE, RÉPUBLIQUE-UNIE DE</option>
-            <option value="TD">TCHAD</option>
-            <option value="CZ">TCHÈQUE, RÉPUBLIQUE</option>
-            <option value="TF">TERRES AUSTRALES FRANÇAISES</option>
-            <option value="TH">THAÏLANDE</option>
-            <option value="TL">TIMOR-LESTE</option>
-            <option value="TG">TOGO</option>
-            <option value="TK">TOKELAU</option>
-            <option value="TO">TONGA</option>
-            <option value="TT">TRINITÉ-ET-TOBAGO</option>
-            <option value="TN">TUNISIE</option>
-            <option value="TM">TURKMÉNISTAN</option>
-            <option value="TC">TURKS ET CAÏQUES, ÎLES</option>
-            <option value="TR">TURQUIE</option>
-            <option value="TV">TUVALU</option>
-            <option value="UA">UKRAINE</option>
-            <option value="UY">URUGUAY</option>
-            <option value="VU">VANUATU</option>
-            <option value="VE">VENEZUELA</option>
-            <option value="VN">VIET NAM</option>
-            <option value="WF">WALLIS ET FUTUNA</option>
-            <option value="YE">YÉMEN</option>
-            <option value="ZM">ZAMBIE</option>
-            <option value="ZW">ZIMBABWE</option>
-        </select>
-    </div>
+        <div class="form-group form-group--country">
+            <!--  ISO-3166-1: Alpha-2 Codes -->
+            <label for="country">Pays *</label>
+            <span class="label label-danger" data-ng-show="submitted && billingForm.country.$error.required">Obligatoire</span>
+            <div class="form-control country__select" id="block_country"><!-- initially a select -->
+                <label class="select--toggler"></label>
+                <div class="country__select--data">
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Afghanistan" required />Afghanistan
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Afrique du sud" required />Afrique du sud
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="ÅLand, îles" required />ÅLand, îles
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Albanie" required />Albanie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Algérie" required />Algérie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Allemagne" required />Allemagne
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Andorre" required />Andorre
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Angola" required />Angola
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Anguilla" required />Anguilla
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Antarctique" required />Antarctique
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Antigua-et-barbuda" required />Antigua-et-barbuda
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Antilles néerlandaises" required />Antilles néerlandaises
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Arabie saoudite" required />Arabie saoudite
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Argentine" required />Argentine
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Arménie" required />Arménie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Aruba" required />Aruba
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Australie" required />Australie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Autriche" required />Autriche
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Azerbaïdjan" required />Azerbaïdjan
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Bahamas" required />Bahamas
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Bahreïn" required />Bahreïn
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Bangladesh" required />Bangladesh
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Barbade" required />Barbade
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Bélarus" required />Bélarus
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Belgique" required />Belgique
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Belize" required />Belize
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Bénin" required />Bénin
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Bermudes" required />Bermudes
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Bhoutan" required />Bhoutan
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Bolivie" required />Bolivie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Bosnie-herzégovine" required />Bosnie-herzégovine
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Botswana" required />Botswana
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Bouvet, île" required />Bouvet, île
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Brésil" required />Brésil
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Brunéi darussalam" required />Brunéi darussalam
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Bulgarie" required />Bulgarie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Burkina faso" required />Burkina faso
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Burundi" required />Burundi
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Caïmanes, îles" required />Caïmanes, îles
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Cambodge" required />Cambodge
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Cameroun" required />Cameroun
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Canada" required />Canada
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Cap-vert" required />Cap-vert
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Centrafricaine, république" required />Centrafricaine, république
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Chili" required />Chili
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Chine" required />Chine
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Christmas, île" required />Christmas, île
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Chypre" required />Chypre
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Cocos (Keeling), ÎLes">Cocos (Keeling), ÎLes
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Colombie" required />Colombie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Comores" required />Comores
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Congo" required />Congo
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Congo, la république démocratique du" required />Congo, la république démocratique du
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Cook, îles" required />Cook, îles
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Corée, république de" required />Corée, république de
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Corée, république populaire démocratique de" required />Corée, république populaire démocratique de
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Costa rica" required />Costa rica
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Côte d'ivoire" required />Côte d'ivoire
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Croatie" required />Croatie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Cuba" required />Cuba
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Danemark" required />Danemark
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Djibouti" required />Djibouti
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Dominicaine, république" required />Dominicaine, république
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Dominique" required />Dominique
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="ÉGypte" required />ÉGypte
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="El salvador" required />El salvador
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="ÉMirats arabes unis" required />ÉMirats arabes unis
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="ÉQuateur" required />ÉQuateur
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="ÉRythrée" required />ÉRythrée
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Espagne" required />Espagne
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Estonie" required />Estonie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="ÉTats-unis" required />ÉTats-unis
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="ÉThiopie" required />ÉThiopie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Falkland, îles (Malvinas)">Falkland, îles (Malvinas)
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Féroé, îles" required />Féroé, îles
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Fidji" required />Fidji
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Finlande" required />Finlande
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="France" required />France
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Gabon" required />Gabon
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Gambie" required />Gambie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Géorgie" required />Géorgie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Géorgie du sud et les îles sandwich du sud" required />Géorgie du sud et les îles sandwich du sud
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Ghana" required />Ghana
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Gibraltar" required />Gibraltar
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Grèce" required />Grèce
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Grenade" required />Grenade
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Groenland" required />Groenland
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Guadeloupe" required />Guadeloupe
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Guam" required />Guam
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Guatemala" required />Guatemala
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Guernesey" required />Guernesey
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Guinée" required />Guinée
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Guinée-bissau" required />Guinée-bissau
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Guinée équatoriale" required />Guinée équatoriale
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Guyana" required />Guyana
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Guyane française" required />Guyane française
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Haïti" required />Haïti
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Heard, île et mcdonald, îles" required />Heard, île et mcdonald, îles
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Honduras" required />Honduras
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Hong-kong" required />Hong-kong
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Hongrie" required />Hongrie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="ÎLe de man" required />ÎLe de man
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="ÎLes mineures éloignées des états-unis" required />ÎLes mineures éloignées des états-unis
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="ÎLes vierges britanniques" required />ÎLes vierges britanniques
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="ÎLes vierges des états-unis" required />ÎLes vierges des états-unis
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Inde" required />Inde
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Indonésie" required />Indonésie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Iran, république islamique d'" required />Iran, république islamique d'
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Iraq" required />Iraq
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Irlande" required />Irlande
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Islande" required />Islande
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Israël" required />Israël
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Italie" required />Italie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Jamaïque" required />Jamaïque
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Japon" required />Japon
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Jersey" required />Jersey
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Jordanie" required />Jordanie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Kazakhstan" required />Kazakhstan
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Kenya" required />Kenya
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Kirghizistan" required />Kirghizistan
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Kiribati" required />Kiribati
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Koweït" required />Koweït
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Lao, république démocratique populaire" required />Lao, république démocratique populaire
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Lesotho" required />Lesotho
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Lettonie" required />Lettonie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Liban" required />Liban
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Libéria" required />Libéria
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Libyenne, jamahiriya arabe" required />Libyenne, jamahiriya arabe
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Liechtenstein" required />Liechtenstein
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Lituanie" required />Lituanie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Luxembourg" required />Luxembourg
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Macao" required />Macao
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Macédoine, l'ex-république yougoslave de" required />Macédoine, l'ex-république yougoslave de
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Madagascar" required />Madagascar
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Malaisie" required />Malaisie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Malawi" required />Malawi
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Maldives" required />Maldives
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Mali" required />Mali
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Malte" required />Malte
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Mariannes du nord, îles" required />Mariannes du nord, îles
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Maroc" required />Maroc
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Marshall, îles" required />Marshall, îles
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Martinique" required />Martinique
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Maurice" required />Maurice
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Mauritanie" required />Mauritanie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Mayotte" required />Mayotte
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Mexique" required />Mexique
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Micronésie, états fédérés de" required />Micronésie, états fédérés de
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Moldova, république de" required />Moldova, république de
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Monaco" required />Monaco
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Mongolie" required />Mongolie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Montserrat" required />Montserrat
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Mozambique" required />Mozambique
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Myanmar" required />Myanmar
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Namibie" required />Namibie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Nauru" required />Nauru
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Népal" required />Népal
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Nicaragua" required />Nicaragua
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Niger" required />Niger
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Nigéria" required />Nigéria
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Niué" required />Niué
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Norfolk, île" required />Norfolk, île
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Norvège" required />Norvège
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Nouvelle-calédonie" required />Nouvelle-calédonie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Nouvelle-zélande" required />Nouvelle-zélande
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Océan indien, territoire britannique de l'" required />Océan indien, territoire britannique de l'
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Oman" required />Oman
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Ouganda" required />Ouganda
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Ouzbékistan" required />Ouzbékistan
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Pakistan" required />Pakistan
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Palaos" required />Palaos
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Palestinien occupé, territoire" required />Palestinien occupé, territoire
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Panama" required />Panama
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Papouasie-nouvelle-guinée" required />Papouasie-nouvelle-guinée
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Paraguay" required />Paraguay
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Pays-bas" required />Pays-bas
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Pérou" required />Pérou
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Philippines" required />Philippines
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Pitcairn" required />Pitcairn
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Pologne" required />Pologne
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Polynésie française" required />Polynésie française
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Porto rico" required />Porto rico
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Portugal" required />Portugal
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Qatar" required />Qatar
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Réunion" required />Réunion
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Roumanie" required />Roumanie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Royaume-uni" required />Royaume-uni
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Russie, fédération de" required />Russie, fédération de
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Rwanda" required />Rwanda
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Sahara occidental" required />Sahara occidental
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Sainte-hélène" required />Sainte-hélène
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Sainte-lucie" required />Sainte-lucie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Saint-kitts-et-nevis" required />Saint-kitts-et-nevis
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Saint-marin" required />Saint-marin
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Saint-pierre-et-miquelon" required />Saint-pierre-et-miquelon
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Saint-siège (ÉTat de la cité du vatican)">Saint-siège (ÉTat de la cité du vatican)
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Saint-vincent-et-les grenadines" required />Saint-vincent-et-les grenadines
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Salomon, îles" required />Salomon, îles
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Samoa" required />Samoa
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Samoa américaines" required />Samoa américaines
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Sao tomé-et-principe" required />Sao tomé-et-principe
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Sénégal" required />Sénégal
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Serbie-et-monténégro" required />Serbie-et-monténégro
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Seychelles" required />Seychelles
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Sierra leone" required />Sierra leone
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Singapour" required />Singapour
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Slovaquie" required />Slovaquie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Slovénie" required />Slovénie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Somalie" required />Somalie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Soudan" required />Soudan
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Sri lanka" required />Sri lanka
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Suède" required />Suède
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Suisse" required />Suisse
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Suriname" required />Suriname
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Svalbard et île jan mayen" required />Svalbard et île jan mayen
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Swaziland" required />Swaziland
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Syrienne, république arabe" required />Syrienne, république arabe
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Tadjikistan" required />Tadjikistan
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Taïwan, province de chine" required />Taïwan, province de chine
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Tanzanie, république-unie de" required />Tanzanie, république-unie de
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Tchad" required />Tchad
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Tchèque, république" required />Tchèque, république
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Terres australes françaises" required />Terres australes françaises
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Thaïlande" required />Thaïlande
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Timor-leste" required />Timor-leste
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Togo" required />Togo
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Tokelau" required />Tokelau
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Tonga" required />Tonga
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Trinité-et-tobago" required />Trinité-et-tobago
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Tunisie" required />Tunisie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Turkménistan" required />Turkménistan
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Turks et caïques, îles" required />Turks et caïques, îles
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Turquie" required />Turquie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Tuvalu" required />Tuvalu
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Ukraine" required />Ukraine
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Uruguay" required />Uruguay
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Vanuatu" required />Vanuatu
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Venezuela" required />Venezuela
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Viet nam" required />Viet nam
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Wallis et futuna" required />Wallis et futuna
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Yémen" required />Yémen
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Zambie" required />Zambie
+                    </label>
+                    <label>
+                        <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Zimbabwe" required />Zimbabwe
+                    </label>
+                </div>
+            </div>
+        </div>
 
-    <div class="form-group form-group--billing_tva">
-        <label for="billing_tva">Numéro de TVA intra-communautaire *</label>
-        <span class="label label-danger" data-ng-show="submitted && billingForm.billing_tva.$error.required">Obligatoire</span>
-        <span class="label label-danger" data-ng-show="submitted && billingForm.billing_tva.$error.pattern">Numéro invalide</span>
-        <input class="form-control billing_tva__input" type="tel" id="billing_tva" name="billing_tva" data-ng-model="billing_tva" data-ng-pattern="/^FR\s\d{2}\s\d{3}\s\d{3}\s\d{3}$/" placeholder="FR 00 000 000 000" required />
-    </div>
+        <div class="form-group form-group--billing_tva">
+            <label for="billing_tva">Numéro de TVA intra-communautaire *</label>
+            <span class="label label-danger" data-ng-show="submitted && billingForm.billing_tva.$error.required">Obligatoire</span>
+            <span class="label label-danger" data-ng-show="submitted && billingForm.billing_tva.$error.pattern">Numéro invalide</span>
+            <input class="form-control billing_tva__input" type="tel" id="billing_tva" name="billing_tva" data-ng-model="billing_tva" data-ng-pattern="/^FR\s\d{2}\s\d{3}\s\d{3}\s\d{3}$/" placeholder="FR 00 000 000 000" required />
+        </div>
 
-    <div class="form-group form-group--validation">
-        <button data-ng-click="submit(billingForm)" class="validation__button validation__button--billingForm">Mettre à jour</button>
-    </div>
+        <div class="form-group form-group--validation">
+            <button data-ng-click="submit(billingForm)" class="validation__button validation__button--billingForm">Mettre à jour</button>
+        </div>
 
-</form>
+    </form>
+</div>

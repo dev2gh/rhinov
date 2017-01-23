@@ -6,30 +6,39 @@
 (function() {
     'use strict';
 
-    //        Angular.js        Application Name
-    //          |                 |               Dependencies
-    //          |                 |                   |
-    var app = angular.module( 'userProfile', ['ui.router', 'ngImgCrop']);
+    angular.module( 'userInfos', ['ui.router', 'ngImgCrop'])
 
-    app.config( [ '$stateProvider', '$urlRouterProvider', '$locationProvider' , function( $stateProvider, $urlRouterProvider, $locationProvider ) {
+    .config( [ '$stateProvider', '$urlRouterProvider', '$locationProvider' , function( $stateProvider, $urlRouterProvider, $locationProvider ) {
 
-        // set possible states to navigate into
-        $stateProvider.state( 'personnelles', {
+        // user infos form state
+        $stateProvider
+        .state( 'personnelles', {
             url: '/personnelles',
-            templateUrl: 'templates/infos-form.html'
+            templateUrl: 'templates/profile-form.html'
         })
+
+        // billing form state
         .state( 'facturation', {
             url: '/facturation',
             templateUrl: 'templates/billing-form.html'
         })
+
+        // agency form state
         .state('agence', {
             url: '/agence',
-            templateUrl: 'templates/agency-form.html'
+            templateUrl: 'templates/agency-form.html',
         });
 
         // set the default activated tab with the first state
         $urlRouterProvider.otherwise('/personnelles');
 
-    }]);
+    }])
+
+    .filter( 'debug', function() {
+        return function( input ) {
+            if ( input === '' ) return 'empty string';
+                return input ? input : ( '' + input );
+        };
+    });
 
 }());

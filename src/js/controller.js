@@ -1,56 +1,65 @@
 /**
-* UserProfile module controller
+* UserInfos module controller
 *
 * @type {angular.module}
 */
 (function () {
-    'user strict';
+    'use strict';
 
-    var app = angular.module('userProfile');
+    angular.module('userInfos')
 
-    app.controller( 'userProfileCtrl', function( $scope, $state ) {
+    .controller( 'userInfosCtrl', ['$scope', '$state', 'TabsService',
+        function( $scope, $state, TabsService ) {
 
-        // image cropper
-        $scope.imageAvatar = '';
-        $scope.imageLogo = '';
-        $scope.croppedAvatar = '';
-        $scope.croppedLogo = '';
+            var _this = this,
+                tabs = TabsService.tabs;
 
-
-        // tabs state manager
-        $scope.tabs = [
-            {
-                title: 'personnelles',
-                uploader_label: 'Votre avatar',
-                uploader_button_text: 'Charger une photo',
-                uploader_caption: ''
-            },
-            { title: 'facturation' },
-            {
-                title: 'agence',
-                uploader_label: 'Votre logo',
-                uploader_button_text: 'Charger un logo',
-                uploader_caption: '2 Mo maximum'
-            }
-        ];
-        $scope.$on( '$stateChangeSuccess', function(){
-            $scope.tabs.forEach( function( item ){
-                item.active = $state.includes( item.title );
-                if ( true === item.active ) {
-                    $scope.current = item;
+            $scope.$on( '$stateChangeSuccess', function(){
+                for ( var index in tabs ) {
+                    if ( tabs.hasOwnProperty( index ) ) {
+                        tabs[index].active = $state.includes( tabs[index].title );
+                    }
                 }
-                if ( true === item.active && 'personnelles' === item.title ) {
-                    $scope.cropped = 'croppedAvatar';
-                }
-                if ( true === item.active && 'agence' === item.title ){
-                    $scope.cropped = 'croppedLogo';
-                }
+                _this.tabs = tabs;
             });
-        });
+        }
+    ])
 
+    .controller( 'profileCtrl', function( $scope, LocalUserInfosService, TabsService ) {
 
-        // form submission handler
-        $scope.submit = function(form) {
+        // (!)
+        selectTransformer.init( 'block_civilite' );
+
+        // handle the user profile form
+        this.submit = function( form ) {
+
+            $scope.message = '';
+            $scope.formerror = '';
+            $scope.formvalid = '';
+            $scope.validated = false;
+
+            // Trigger validation flag.
+            $scope.submitted = true;
+
+            // If form is invalid, return and let AngularJS show validation errors.
+            if (form.$invalid) {
+                $scope.formerror = form;
+                $scope.message = 'Désolé, Quelques erreurs se sont glissées dans formulaire!';
+                return;
+            }
+
+            $scope.validated = true;
+            $scope.formvalid = form;
+            $scope.message = 'Votre mise à jour a bien été enregistrée!';
+        };
+    })
+
+    .controller( 'billingCtrl', function( $scope, LocalUserInfosService, TabsService ) {
+
+        // (!)
+        selectTransformer.init( 'block_country' );
+
+        this.submit = function( form ) {
 
             $scope.message = '';
             $scope.formerror = '';
@@ -72,6 +81,31 @@
             $scope.message = 'Votre mise à jour a bien été enregistrée!';
 
         };
+    })
 
+    .controller( 'agencyCtrl', function( $scope, LocalUserInfosService, TabsService ) {
+
+        this.submit = function( form ) {
+
+            $scope.message = '';
+            $scope.formerror = '';
+            $scope.formvalid = '';
+            $scope.validated = false;
+
+            // Trigger validation flag.
+            $scope.submitted = true;
+
+            // If form is invalid, return and let AngularJS show validation errors.
+            if (form.$invalid) {
+                $scope.formerror = form;
+                $scope.message = 'Désolé, Quelques erreurs se sont glissées dans formulaire!';
+                return;
+            }
+
+            $scope.validated = true;
+            $scope.formvalid = form;
+            $scope.message = 'Votre mise à jour a bien été enregistrée!';
+
+        };
     });
 })();

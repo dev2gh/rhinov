@@ -10,11 +10,11 @@
         <title>Rhinov User</title>
     </head>
 
-    <body data-ng-app="userProfile">
+    <body data-ng-app="userInfos">
 
         <head-nav></head-nav>
 
-        <div class="container-fluid tabset--container" data-ng-controller="userProfileCtrl as user">
+        <div class="container-fluid tabset--container" data-ng-controller="userInfosCtrl as user">
 
             <page-tabset></page-tabset>
 
@@ -26,10 +26,13 @@
 
         </div>
 
+        <script src="src/js/select-customizer.js"></script>
         <script src="src/js/vendors.min.js"></script>
         <script src="src/js/app.js"></script>
+        <script src="src/js/TabsService.js"></script>
+        <script src="src/js/UserInfosService.js"></script>
         <script src="src/js/controller.js"></script>
         <script src="src/js/directives.js"></script>
-        <script src="src/js/services.js"></script>
+
     </body>
 </html>

@@ -6,42 +6,42 @@
 (function() {
     'use strict';
 
-    var app = angular.module( 'userProfile' );
+    angular.module( 'userInfos' )
 
-    app.directive( 'headNav', function () {
+    .directive( 'headNav', function () {
         return {
             restrict: 'E',
             templateUrl: 'templates/header-navigation.html'
-        }
-    }).
-    directive( 'pageTabset', function () {
+        };
+    })
+
+    .directive( 'pageTabset', function () {
         return {
             restrict: 'E',
             templateUrl: 'templates/page-tabset.html'
-        }
-    }).
-    directive( 'imageCropper', function() {
+        };
+    })
+
+    .directive( 'imageCropper', function() {
         return {
             restrict: 'A',
-            link: function(scope, element, attrs) {
+            link: function( scope, element, attrs ) {
 
-                var handleFileSelect=function(evt) {
+                scope.imageAvatar = '';
+                scope.imageLogo = '';
+                scope.croppedAvatar = '';
+                scope.croppedLogo = '';
+
+                var handleFileSelect = function(evt) {
                     var file = evt.currentTarget.files[0],
-                    scParent = scope.$parent,
                     reader = new FileReader();
 
                     reader.onload = function ( evt ) {
-                        scParent.$apply(function( scParent ){
-                            if( scParent.current ) {
-                                if( 'personnelles' === scParent.current.title ) {
-                                    scParent.cropped = 'croppedAvatar';
-                                    scParent.imageAvatar = evt.target.result;
-                                }
-                                if( 'agence' === scParent.current.title ) {
-                                    scParent.cropped = 'croppedLogo';
-                                    scParent.imageLogo = evt.target.result;
-                                }
-                            }
+                        scope.$apply(function( scope ){
+                            if( scope.profile )
+                                scope.imageAvatar = evt.target.result;
+                            if( scope.agency )
+                                scope.imageLogo = evt.target.result;
                         });
                     };
                     reader.readAsDataURL(file);
@@ -49,8 +49,9 @@
                 element.on( 'change', handleFileSelect );
             }
         };
-    }).
-    directive("passwordVerify", function() {
+    })
+
+    .directive("passwordVerify", function() {
         return {
             require: "ngModel",
             scope: {
@@ -59,7 +60,6 @@
             link: function(scope, element, attrs, ctrl) {
                 scope.$watch(function() {
                     var combined;
-
                     if ( scope.passwordVerify || ctrl.$viewValue ) {
                         combined = scope.passwordVerify + '_' + ctrl.$viewValue;
                     }
