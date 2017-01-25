@@ -8,7 +8,7 @@
 
     angular.module( 'userInfos', ['ui.router', 'ngImgCrop'])
 
-    .config( [ '$stateProvider', '$urlRouterProvider', '$locationProvider' , function( $stateProvider, $urlRouterProvider, $locationProvider ) {
+    .config( [ '$stateProvider', '$urlRouterProvider', '$locationProvider', function( $stateProvider, $urlRouterProvider, $locationProvider ) {
 
         // user infos form state
         $stateProvider

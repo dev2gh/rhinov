@@ -8,11 +8,11 @@
 
     angular.module('userInfos')
 
-    .controller( 'userInfosCtrl', ['$scope', '$state', 'TabsService',
-        function( $scope, $state, TabsService ) {
+    .controller( 'userInfosCtrl', ['$scope', '$state', 'TabService',
+        function( $scope, $state, TabService ) {
 
             var _this = this,
-                tabs = TabsService.tabs;
+                tabs = TabService.tabs;
 
             $scope.$on( '$stateChangeSuccess', function(){
                 for ( var index in tabs ) {
@@ -25,87 +25,28 @@
         }
     ])
 
-    .controller( 'profileCtrl', function( $scope, LocalUserInfosService, TabsService ) {
+    .controller( 'profileCtrl', function( $scope, LocalUserInfosService, FormService ) {
 
-        // (!)
-        selectTransformer.init( 'block_civilite' );
+        selectTransformer.init( 'block_civilite' ); // (!)
 
-        // handle the user profile form
-        this.submit = function( form ) {
-
-            $scope.message = '';
-            $scope.formerror = '';
-            $scope.formvalid = '';
-            $scope.validated = false;
-
-            // Trigger validation flag.
-            $scope.submitted = true;
-
-            // If form is invalid, return and let AngularJS show validation errors.
-            if (form.$invalid) {
-                $scope.formerror = form;
-                $scope.message = 'Désolé, Quelques erreurs se sont glissées dans formulaire!';
-                return;
-            }
-
-            $scope.validated = true;
-            $scope.formvalid = form;
-            $scope.message = 'Votre mise à jour a bien été enregistrée!';
+        this.submit = function( formIn ) {
+            this.f = FormService.watchForm( formIn );
         };
     })
 
-    .controller( 'billingCtrl', function( $scope, LocalUserInfosService, TabsService ) {
+    .controller( 'billingCtrl', function( $scope, LocalUserInfosService, FormService ) {
 
-        // (!)
-        selectTransformer.init( 'block_country' );
+        selectTransformer.init( 'block_country' ); // (!)
 
-        this.submit = function( form ) {
-
-            $scope.message = '';
-            $scope.formerror = '';
-            $scope.formvalid = '';
-            $scope.validated = false;
-
-            // Trigger validation flag.
-            $scope.submitted = true;
-
-            // If form is invalid, return and let AngularJS show validation errors.
-            if (form.$invalid) {
-                $scope.formerror = form;
-                $scope.message = 'Désolé, Quelques erreurs se sont glissées dans formulaire!';
-                return;
-            }
-
-            $scope.validated = true;
-            $scope.formvalid = form;
-            $scope.message = 'Votre mise à jour a bien été enregistrée!';
-
+        this.submit = function( formIn ) {
+            this.f = FormService.watchForm( formIn );
         };
     })
 
-    .controller( 'agencyCtrl', function( $scope, LocalUserInfosService, TabsService ) {
+    .controller( 'agencyCtrl', function( $scope, LocalUserInfosService, FormService ) {
 
-        this.submit = function( form ) {
-
-            $scope.message = '';
-            $scope.formerror = '';
-            $scope.formvalid = '';
-            $scope.validated = false;
-
-            // Trigger validation flag.
-            $scope.submitted = true;
-
-            // If form is invalid, return and let AngularJS show validation errors.
-            if (form.$invalid) {
-                $scope.formerror = form;
-                $scope.message = 'Désolé, Quelques erreurs se sont glissées dans formulaire!';
-                return;
-            }
-
-            $scope.validated = true;
-            $scope.formvalid = form;
-            $scope.message = 'Votre mise à jour a bien été enregistrée!';
-
+        this.submit = function( formIn ) {
+            this.f = FormService.watchForm( formIn );
         };
     });
 })();

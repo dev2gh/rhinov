@@ -1,12 +1,16 @@
 /**
 * Tabs depending on state
+*
+* Service (and not provider with $get, or factory with return {})
+* because very "simple object instance", no operations
+* and becaues value < service < factory < provider
 */
 (function() {
     'use strict';
 
     angular.module('userInfos')
 
-    .service('TabsService', function(){
+    .service('TabService', function(){
 
         this.tabs = {};
 
@@ -20,7 +24,7 @@
         this.tabs.billing = {
                 title: 'facturation'
             };
-            
+
         this.tabs.agency = {
             title: 'agence',
             uploader_label: 'Votre logo',

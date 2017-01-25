@@ -1,45 +1,50 @@
 <div ng-controller="billingCtrl as billing">
+
+    <div class="message message--validated" ng-show="billing.f.formerror||billing.f.formvalid">
+        <div ng-class="{true:'text--valid', false:'text--error'}[billing.f.validated]">{{billing.f.message}}</div>
+    </div>
+
     <form class="form form--wrapper form--facturation" name="billingForm" novalidate role="form">
 
         <div class="form-group form-group--billing-name">
             <label for="billingName">Raison sociale *</label>
-            <span class="label label-danger" data-ng-show="submitted && billingForm.billingName.$error.required">Obligatoire</span>
+            <span class="label label-danger" data-ng-show="billing.f.submitted && billing.f.formerror.billingName.$error.required">Obligatoire</span>
             <input class="form-control billing__input" type="text" id="billingName" name="billingName" data-ng-model="billingName" required placeholder="Rhino Entreprise" />
         </div>
 
         <div class="form-group form-group--billing_telephone">
             <label for="billing_telephone">Telephone *</label>
-            <span class="label label-danger" data-ng-show="submitted && billingForm.billing_telephone.$error.required">Obligatoire</span>
-            <span class="label label-danger" data-ng-show="submitted && billingForm.billing_telephone.$error.pattern">Numéro Invalide</span>
+            <span class="label label-danger" data-ng-show="billing.f.submitted && billing.f.formerror.billing_telephone.$error.required">Obligatoire</span>
+            <span class="label label-danger" data-ng-show="billing.f.submitted && billing.f.formerror.billing_telephone.$error.pattern">Numéro Invalide</span>
             <input class="form-control telephone__input" type="tel" id="billing_telephone" name="billing_telephone" data-ng-model="billing_telephone" data-ng-pattern='/^(\+\d{1,3}[- ]?)?\d{10,}$/' placeholder="+33 0" required data-ng-model="billing_telephone" />
         </div>
 
         <div class="form-group form-group--billing_address">
             <label for="billing_address">Adresse *</label>
-            <span class="label label-danger" data-ng-show="submitted && billingForm.billing_address.$error.required">Obligatoire</span>
+            <span class="label label-danger" data-ng-show="billing.f.submitted && billing.f.formerror.billing_address.$error.required">Obligatoire</span>
             <input class="form-control billing_address__input" type="email" id="billing_address" name="billing_address" data-ng-model="billing_address" placeholder="8 Av. de la Girafe" required />
         </div>
 
         <div class="form-group form-group--billing_postal">
             <label for="billing_postal">Code postal *</label>
-            <span class="label label-danger" data-ng-show="submitted && billingForm.billing_postal.$error.required">Obligatoire</span>
+            <span class="label label-danger" data-ng-show="billing.f.submitted && billing.f.formerror.billing_postal.$error.required">Obligatoire</span>
             <input class="form-control billing_postal__input" type="text" id="billing_postal" name="billing_postal" data-ng-model="billing_postal"  placeholder="00 128" required />
         </div>
 
         <div class="form-group form-group--billing_city">
             <label for="billing_city">Ville *</label>
-            <span class="label label-danger" data-ng-show="submitted && billingForm.billing_city.$error.required">Obligatoire</span>
+            <span class="label label-danger" data-ng-show="billing.f.submitted && billing.f.formerror.billing_city.$error.required">Obligatoire</span>
             <input class="form-control billing_city__input" type="text" id="billing_city" name="billing_city" data-ng-model="billing_city" placeholder="Jungle City" required />
         </div>
 
         <div class="form-group form-group--country">
             <!--  ISO-3166-1: Alpha-2 Codes -->
             <label for="country">Pays *</label>
-            <span class="label label-danger" data-ng-show="submitted && billingForm.country.$error.required">Obligatoire</span>
+            <span class="label label-danger" data-ng-show="billing.f.submitted && billing.f.formerror.country.$error.required">Obligatoire</span>
             <div class="form-control country__select" id="block_country"><!-- initially a select -->
                 <label class="select--toggler"></label>
                 <div class="country__select--data">
-                    <label>
+                   <label>
                         <input type="radio" data-ng-model="country" name="country" class="country__radio" value="Afghanistan" required />Afghanistan
                     </label>
                     <label>
@@ -774,13 +779,13 @@
 
         <div class="form-group form-group--billing_tva">
             <label for="billing_tva">Numéro de TVA intra-communautaire *</label>
-            <span class="label label-danger" data-ng-show="submitted && billingForm.billing_tva.$error.required">Obligatoire</span>
-            <span class="label label-danger" data-ng-show="submitted && billingForm.billing_tva.$error.pattern">Numéro invalide</span>
+            <span class="label label-danger" data-ng-show="billing.f.submitted && billing.f.formerror.billing_tva.$error.required">Obligatoire</span>
+            <span class="label label-danger" data-ng-show="billing.f.submitted && billing.f.formerror.billing_tva.$error.pattern">Numéro TVA invalide</span>
             <input class="form-control billing_tva__input" type="tel" id="billing_tva" name="billing_tva" data-ng-model="billing_tva" data-ng-pattern="/^FR\s\d{2}\s\d{3}\s\d{3}\s\d{3}$/" placeholder="FR 00 000 000 000" required />
         </div>
 
         <div class="form-group form-group--validation">
-            <button data-ng-click="submit(billingForm)" class="validation__button validation__button--billingForm">Mettre à jour</button>
+            <button data-ng-click="billing.submit( billingForm )" class="validation__button validation__button--billingForm">Mettre à jour</button>
         </div>
 
     </form>
